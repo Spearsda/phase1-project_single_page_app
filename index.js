@@ -1,4 +1,6 @@
 
+//function that fetches a random joke from api
+
 function showJoke () {
     return fetch ('https://api.chucknorris.io/jokes/random')
     .then(response => response.json())
@@ -26,22 +28,6 @@ function createJokeDiv (joke) {
 
 }
 
-
-
-//function that creates a div for an input section for comments on the curent joke.
-
-
-/*function createCommentDiv () {
-    const div2 = document.createElement('div')
-    const input = document.createElement('input');
-    
-    input.setAttribute('type', 'text');
-    input.setAttribute('value', 'default');
-
-    div2.appendChild(input)
-
-    return div2 
-}*/
  
 
 //function that appends div to joke container
@@ -61,11 +47,6 @@ function jokeToDOM () {
     .then(data=>appendJoke(data))
 }
 
-/*function commentsToDOM() {
-    const inputsection = document.getElementById('comments-section')
-    createJokeDiv() 
-    .then (div => inputsection.appendChild(div))
-}*/
 
 // create a function that takes text from the comment section and posts it to the DOM
 
@@ -73,14 +54,29 @@ function postComments (){
 
     const input = document.getElementById('opinion-here')
     const output = input.value
+    const commentDiv = document.getElementById('posted_comments')
   
     const createPost = document.createElement('p')
+    createPost.setAttribute('id', "commentText")
+    const addButton = document.createElement('button')
+    addButton.textContent= 'delete button'
+    commentDiv.appendChild(addButton)
+
+    addButton.addEventListener('click', function () { 
+            
+    } )
+
     createPost.innerHTML = output
     document.getElementById('posted_comments').appendChild(createPost)
      document.getElementById('opinion-here').value='';
   
   }
-  
+
+
+
+
+  //const addButton = document.createElement('button')
+  //createPost.appendChild(addButton)
   
 
 
